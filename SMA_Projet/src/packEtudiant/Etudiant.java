@@ -85,18 +85,18 @@ public class Etudiant extends GuiAgent {
 		            }
 		            java.util.Date date=new java.util.Date();
 					
-					java.sql.Date sqlDate=new java.sql.Date(date.getTime());
+					//java.sql.Date sqlDate=new java.sql.Date(date.getTime());
 					java.sql.Timestamp sqlTime=new java.sql.Timestamp(date.getTime());
 				
-				 String sql = "insert into Table_Professeur_Etudiant (id,expediteur,destinataire,conntenu,date,time) values (?,?,?,?,?,?)";
+				 String sql = "insert into Table_Professeur_Etudiant (id,expediteur,destinataire,conntenu,time) values (?,?,?,?,?)";
 				 try (PreparedStatement statement = (PreparedStatement) conn.prepareStatement(sql)) {
 					 statement.setString(1, user_id.toString());
 
 					 statement.setString(2, destinataire);
 					    statement.setString(3, expediteur);
 					    statement.setString(4, contenu);
-					    statement.setDate(5, sqlDate);
-					    statement.setTimestamp(6, sqlTime);
+					   // statement.setDate(5, sqlDate);
+					    statement.setTimestamp(5, sqlTime);
 
 					    statement.executeUpdate();
 					}
