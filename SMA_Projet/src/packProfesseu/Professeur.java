@@ -77,10 +77,10 @@ public class Professeur extends GuiAgent {
 				    } catch (Exception e) {
 				       System.out.println(e);
 				 }
-				 conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/chawch", "root", "");
+				 conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/sma_database", "root", "");
 				 System.out.println("Connection is created successfully:");
 				 
-				 PreparedStatement pst1 = (PreparedStatement) conn.prepareStatement("select max(id)+1 from etudiant ");
+				 PreparedStatement pst1 = (PreparedStatement) conn.prepareStatement("select max(id)+1 from Table_Professeur_Etudiant ");
 		            ResultSet rs = pst1.executeQuery();
 		            String user_id ="" ;
 		            while(rs.next())
@@ -92,7 +92,7 @@ public class Professeur extends GuiAgent {
 					java.sql.Date sqlDate=new java.sql.Date(date.getTime());
 					java.sql.Timestamp sqlTime=new java.sql.Timestamp(date.getTime());
 				
-				 String sql = "insert into etudiant (id,expediteur,destinataire,conntenu,date,time) values (?,?,?,?,?,?)";
+				 String sql = "insert into Table_Professeur_Etudiant (id,expediteur,destinataire,conntenu,date,time) values (?,?,?,?,?,?)";
 				 try (PreparedStatement statement = (PreparedStatement) conn.prepareStatement(sql)) {
 					 statement.setString(1, user_id.toString());
 
